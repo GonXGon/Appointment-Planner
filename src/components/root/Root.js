@@ -1,6 +1,6 @@
 import { Outlet, NavLink } from "react-router-dom";
 
-export const Routes = {
+export const ROUTES = {
     CONTACTS: '/contacts',
     APPOINTMENTS: '/appointments',
 };
@@ -9,8 +9,8 @@ function Root() {
     return(
         <>
             <nav>
-                <NavLink to={Routes.CONTACTS}>Contacts</NavLink>
-                <NavLink to={Routes.APPOINTMENTS}>Appointments</NavLink>
+                <NavLink to={ROUTES.CONTACTS}>Contacts</NavLink>
+                <NavLink to={ROUTES.APPOINTMENTS}>Appointments</NavLink>
             </nav>
             <Outlet/>
         </>

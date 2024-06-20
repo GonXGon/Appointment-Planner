@@ -1,20 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import { TileList } from "../../components/tileList/TileList";
+import { AppointmentForm } from "../../components/appointmentForm/AppointmentForm";
 
+export const AppointmentsPage = ({
+  appointments,
+  addAppointment,
+  contacts
+}) => {
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
-export const AppointmentsPage = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addAppointment(name, contact, date, time);
+    setName("");
+    setContact("");
+    setDate("");
+    setTime("");
+  };
 
-    return(
-        <div>
-            <section>
-                <h2>Add Appointment</h2>
-            </section>
-            <hr/>
-            <section>
-                <h2>Appointments</h2>
-            </section>
-        </div>
-    );
-}
+  return (
+    <>
+      <section>
+        <h2>Add Appointment</h2>
+        <AppointmentForm
+          contacts={contacts}
+          name={name}
+          setTitle={setName}
+          contact={contact}
+          setContact={setContact}
+          date={date}
+          setDate={setDate}
+          time={time}
+          setTime={setTime}
+          handleSubmit={handleSubmit}
+        />
+      </section>
+      <hr />
+      <section>
+        <h2>Appointments</h2>
+        <TileList tiles={appointments} />
+      </section>
+    </>
+  );
+};
